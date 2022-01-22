@@ -16,6 +16,16 @@ jobs:
       # Required for CodeQL action (upload SARIF files).
       security-events: write
 
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_DATABASE: stop
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_HOST: 127.0.0.1
+        ports:
+          - 3306:3306
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
